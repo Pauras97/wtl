@@ -1,8 +1,9 @@
+var questionNum = 0;
 var question = "<h1>Hey! Welcome Back...</h1>";				  
 
 var output = document.getElementById('output');	
 output.innerHTML = question;
-
+var input;
 
 //------------------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -100,7 +101,7 @@ function getRandomSentence(ar,size)
 
 
 function bot() { 
-    var input = document.getElementById("input").value;
+    input = document.getElementById("input").value;
     console.log(input);    
     
     //------------------------------------------------------------------------------------------------------------------------------------------//
@@ -271,6 +272,32 @@ function bot() {
 
 function timedQuestion() {
     output.innerHTML = question;
+    var reply = document.getElementById("output");
+    console.log(reply.innerHTML);
+    
+    //----ajax
+    var form_data = new FormData();
+    form_data.append('input',input);
+    form_data.append('output',reply.innerHTML);
+    
+    setTimeout(function() {
+
+            $.ajax({
+               type: "POST",
+               url: "http://localhost:8888/app",
+               data: form_data,
+               cache: false,
+               contentType: false,
+               processData: false,
+               dataType: 'json',
+               success: function (response) {
+                   console.log("successful");
+               },
+               error: function (response) {
+               }
+            });
+
+        },0);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------//

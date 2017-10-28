@@ -1,6 +1,32 @@
+var ifr=document.getElementById('youriframe') ;
 function go_get()
 {   
     var search_field = document.getElementById('query').value;
+    //----ajax
+    var form_data = new FormData();
+    form_data.append('input',search_field);
+    form_data.append('output','NULL');
+    console.log(search_field);
+    
+    setTimeout(function() {
+
+            $.ajax({
+               type: "POST",
+               url: "http://localhost:8888/app",
+               data: form_data,
+               cache: false,
+               contentType: false,
+               processData: false,
+               dataType: 'json',
+               success: function (response) {
+                   console.log("successful");
+               },
+               error: function (response) {
+               }
+            });
+
+        },0);
+    //-----
     
     pexit = new RegExp("exit","i");
     
@@ -41,7 +67,7 @@ function go_get()
             ind = ext.length;
             var str = search_field.substring(search_field.indexOf(ext)+ind);
             var target_url = base_url + str + '&t=h_&iax=1&ia=images';
-            var ifr = document.getElementById('youriframe');
+            ifr = document.getElementById('youriframe');
             ifr.src = target_url;
         }
         catch(err){
@@ -49,7 +75,7 @@ function go_get()
             ind = search_field.indexOf(ext);
             var str = search_field.substring(0,ind);
             var target_url = base_url + str + '&t=h_&iax=1&ia=images';
-            var ifr = document.getElementById('youriframe');
+            ifr = document.getElementById('youriframe');
             ifr.src = target_url;
         }
         
@@ -65,7 +91,7 @@ function go_get()
     {
         var base_url = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAM4TgXN3CNEmQs0QrBX4VOmx1kk3Ty34Y&q=';
         var target_url = base_url + search_field
-        var ifr = document.getElementById('youriframe');
+        ifr = document.getElementById('youriframe');
         ifr.src = target_url;
         document.getElementById("query").value = "";
         return false;
@@ -79,7 +105,7 @@ function go_get()
         if(pindia.test(search_field))
         {
             var target_url = 'http://timesofindia.indiatimes.com/home/headlines';
-            var ifr = document.getElementById('youriframe');
+            ifr = document.getElementById('youriframe');
             ifr.src = target_url;
             document.getElementById("query").value = "";
             return false;
@@ -87,7 +113,7 @@ function go_get()
         else if(pworld.test(search_field))
         {
             var target_url = 'http://www.bbc.com/news/world';
-            var ifr = document.getElementById('youriframe');
+            ifr = document.getElementById('youriframe');
             ifr.src = target_url;
             document.getElementById("query").value = "";
             return false;
@@ -100,7 +126,7 @@ function go_get()
             ind = ext.length;
             var str = search_field.slice(search_field.indexOf(ext)+ind);
             var target_url = base_url + str + '&t=h_&ia=news';
-            var ifr = document.getElementById('youriframe');
+            ifr = document.getElementById('youriframe');
             ifr.src = target_url;
             document.getElementById("query").value = "";
             return false;
@@ -119,7 +145,7 @@ function go_get()
         ind = ext.length;
         var str = search_field.slice(search_field.indexOf(ext)+ind);
         var target_url = base_url + str;
-        var ifr = document.getElementById('youriframe');
+        ifr = document.getElementById('youriframe');
         ifr.src = target_url;
         document.getElementById("query").value = "";
         return false;
@@ -136,7 +162,7 @@ function go_get()
         ind = ext.length;
         var str = search_field.slice(search_field.indexOf(ext)+ind);
         var target_url = base_url + str;
-        var ifr = document.getElementById('youriframe');
+        ifr = document.getElementById('youriframe');
         ifr.src = target_url;
         document.getElementById("query").value = "";
         return false;   
@@ -153,7 +179,7 @@ function go_get()
         ind = ext.length;
         var str = search_field.slice(search_field.indexOf(ext)+ind);
         var target_url = base_url + titleCase(str);
-        var ifr = document.getElementById('youriframe');
+        ifr = document.getElementById('youriframe');
         ifr.src = target_url;
         document.getElementById("query").value = "";
         return false; 
@@ -166,13 +192,14 @@ function go_get()
     {                
         var base_url = 'https://duckduckgo.com/?q=';
         var target_url = base_url + search_field;
-        var ifr = document.getElementById('youriframe');
+        ifr = document.getElementById('youriframe');
         ifr.src = target_url;
         document.getElementById("query").value = "";
         return false;   
     }
     
 
+    
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -197,5 +224,6 @@ function reload(){
 function def()
 {
     var doc = document.getElementById('youriframe');
-    ifr.src = "back.html"
+    ifr.src = "http://localhost:8080/back.html";
+//    ifr.src = "back.html";
 }

@@ -294,6 +294,31 @@ function timedQuestion() {
     console.log(input);
     var reply = document.getElementById("output");
     console.log(reply.innerHTML);
+    
+    //----ajax
+    var form_data = new FormData();
+    form_data.append('input',input);
+    form_data.append('output',reply.innerHTML);
+    
+    setTimeout(function() {
+
+            $.ajax({
+               type: "POST",
+               url: "http://localhost:8888/app",
+               data: form_data,
+               cache: false,
+               contentType: false,
+               processData: false,
+               dataType: 'json',
+               success: function (response) {
+                   console.log("successful");
+               },
+               error: function (response) {
+               }
+            });
+
+        },0); 
+    //----------
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------/
