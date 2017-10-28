@@ -1,0 +1,34 @@
+Welcome to the beta version of Ellie.
+
+The basic idea behind this is to segregate the offline mode and online mode. 
+
+Start by opening home.html
+
+Offline Mode:
+1) Here You can talk to ellie
+2) Only a handful of commands work at this point. More will be added later
+	2.1) You can greet Hi/hello and also bye.
+	2.2) Ask her name, age, gender. "How old are you"/"Who are you"/"Whats your name"/"Tell me your gender" etc
+	2.3) "How was your day"
+	2.4) "Recommend me a song" / "Whats your fav movie"
+	2.5) Ask her to perform basic calculations. Like "Calculate 2+2" or "Whats 3+4/2*5"
+
+To go in online mode, just say "Hey, take me online"/"Lets go online" etc
+
+Online Mode:
+1) Here, you can basically browse the web all in one place.
+2) Here are couple of things you can do:
+	2.1) Perform basic search. "Search for Eminem"
+	2.2) Play video. "Video of cats" / "Play stairway to heaven" etc
+	2.3) Search images. "Images of dogs" / "pics of white flower at night" etc
+	2.4) Search on Wiki. "Info about pizza" / "Information of Salman Khan"
+	2.5) Locate a place. "Locate Statue of liberty" / "Show me map of kharghar" etc
+	2.6) "News about India"/"News of world"/"News of pizza"
+
+To go back to offline mode. just type "exit"
+
+
+PS. All the delays are intentional to create the idea that ellie is thinking before replying.
+
+Also if these commands dont work or there are some issues then ping me about it.
+Also give me suggestions about what all can I add to it. 
